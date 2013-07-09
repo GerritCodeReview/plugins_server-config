@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7b238f5_d7055c24",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003935
+      },
+      "writtenOn": "2013-07-09T14:56:18Z",
+      "side": 1,
+      "message": "The status is again set inside the writeFile(...) method. Setting the status once should be enough.",
+      "revId": "8641c7f28219331dae2e2bf6e75c20b56c728143",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
