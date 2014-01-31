@@ -16,6 +16,24 @@
       "revId": "06f6111c57ad8791ec81bc7ee4659e9d95af8698",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2e5ee1d_b2ada0b2",
+        "filename": "tools/download_file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003935
+      },
+      "writtenOn": "2014-01-31T07:59:54Z",
+      "side": 1,
+      "message": "I\u0027m also hating to copy this code around :(\n\n \u003e what else can we do?\n\nCan we have the lib and tools folder packaged in a Maven artefact? We could then use Maven for bootstraping (download the dependency and unpack it) or have a simple (and stable) Buck file which just does this.\n\nFor now I\u0027m going to merge this, because internally we need to package this plugin in the gerrit.war file and for this it needs to be buildable with Buck.",
+      "parentUuid": "f2cda6a7_54be4ce5",
+      "revId": "06f6111c57ad8791ec81bc7ee4659e9d95af8698",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
