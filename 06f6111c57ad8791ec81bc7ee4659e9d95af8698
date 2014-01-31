@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2cda6a7_54be4ce5",
+        "filename": "tools/download_file.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001240
+      },
+      "writtenOn": "2014-01-31T01:35:32Z",
+      "side": 1,
+      "message": "Not thrilled about plugins making their own copies of this, its going to be hard to get everyone to update to include e.g. a bug fix or new feature, but ... what else can we do?",
+      "revId": "06f6111c57ad8791ec81bc7ee4659e9d95af8698",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
