@@ -52,7 +52,7 @@ public class ServerConfigServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isAllowed(req)) {
+    if (!isValidFile(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -62,17 +62,14 @@ public class ServerConfigServlet extends HttpServlet {
   @Override
   public void doPut(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isAllowed(req)) {
+    if (!isValidFile(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
     writeFile(req, res);
   }
 
-  private boolean isAllowed(HttpServletRequest req) throws IOException {
-    if (!currentUser.get().getCapabilities().canAdministrateServer()) {
-      return false;
-    }
+  private boolean isValidFile(HttpServletRequest req) throws IOException {
     File f = configFile(req);
     if (!f.isFile()) {
       return false;
