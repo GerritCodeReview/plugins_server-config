@@ -19,6 +19,7 @@ import com.google.inject.servlet.ServletModule;
 class HttpModule extends ServletModule {
   @Override
   protected void configureServlets() {
+    filter("/*").through(HideForNonAdmins.class);
     serve("/*").with(ServerConfigServlet.class);
   }
 }
