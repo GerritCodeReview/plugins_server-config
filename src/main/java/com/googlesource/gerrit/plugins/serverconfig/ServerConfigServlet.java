@@ -14,6 +14,11 @@
 
 package com.googlesource.gerrit.plugins.serverconfig;
 
+import com.google.common.io.ByteStreams;
+import com.google.gerrit.server.config.SitePaths;
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -25,13 +30,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.common.io.ByteStreams;
-import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.config.SitePaths;
-import com.google.inject.Inject;
-import com.google.inject.Provider;
-import com.google.inject.Singleton;
-
 @Singleton
 public class ServerConfigServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -39,20 +37,18 @@ public class ServerConfigServlet extends HttpServlet {
   private final File site_path;
   private final File etc_dir;
   private final File static_dir;
-  private final Provider<CurrentUser> currentUser;
 
   @Inject
-  ServerConfigServlet(SitePaths sitePaths, Provider<CurrentUser> currentUser) {
+  ServerConfigServlet(SitePaths sitePaths) {
     this.site_path = sitePaths.site_path;
     this.etc_dir = sitePaths.etc_dir;
     this.static_dir = sitePaths.static_dir;
-    this.currentUser = currentUser;
   }
 
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isAllowed(req)) {
+    if (!isValidFile(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -62,17 +58,14 @@ public class ServerConfigServlet extends HttpServlet {
   @Override
   public void doPut(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isAllowed(req)) {
+    if (!isValidFile(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
     writeFile(req, res);
   }
 
-  private boolean isAllowed(HttpServletRequest req) throws IOException {
-    if (!currentUser.get().getCapabilities().canAdministrateServer()) {
-      return false;
-    }
+  private boolean isValidFile(HttpServletRequest req) throws IOException {
     File f = configFile(req);
     if (!f.isFile()) {
       return false;
