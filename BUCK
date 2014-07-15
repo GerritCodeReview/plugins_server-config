@@ -12,10 +12,3 @@ gerrit_plugin(
     'Gerrit-HttpModule: com.googlesource.gerrit.plugins.serverconfig.HttpModule',
   ]
 )
-
-maven_jar(
-  name = 'plugin-lib',
-  id = 'com.google.gerrit:gerrit-plugin-api:' + API_VERSION,
-  repository = REPO,
-  license = 'Apache2.0',
-)
