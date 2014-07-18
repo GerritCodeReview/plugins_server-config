@@ -14,13 +14,25 @@
 
 package com.googlesource.gerrit.plugins.serverconfig;
 
+import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.Multimap;
 import com.google.common.io.ByteStreams;
+import com.google.gerrit.audit.AuditEvent;
+import com.google.gerrit.audit.AuditService;
+import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.httpd.WebSession;
+import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.config.SitePaths;
+import com.google.gerrit.server.util.TimeUtil;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 import com.google.inject.Singleton;
+
+import org.eclipse.jgit.diff.RawText;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -37,12 +49,25 @@ public class ServerConfigServlet extends HttpServlet {
   private final File site_path;
   private final File etc_dir;
   private final File static_dir;
+  private final String gerrit_config_path;
+  private final AuditService auditService;
+  private final Provider<WebSession> webSession;
+  private final String pluginName;
 
   @Inject
-  ServerConfigServlet(SitePaths sitePaths) {
+  ServerConfigServlet(SitePaths sitePaths, Provider<WebSession> webSession,
+      AuditService auditService, @PluginName String pluginName) {
+    this.webSession = webSession;
+    this.auditService = auditService;
+    this.pluginName = pluginName;
     this.site_path = sitePaths.site_path;
     this.etc_dir = sitePaths.etc_dir;
     this.static_dir = sitePaths.static_dir;
+    try {
+      this.gerrit_config_path = sitePaths.gerrit_config.getCanonicalPath();
+    } catch (IOException e) {
+      throw new RuntimeException();
+    }
   }
 
   @Override
@@ -62,7 +87,52 @@ public class ServerConfigServlet extends HttpServlet {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
-    writeFile(req, res);
+    if (isGerritConfig(req)) {
+      writeConfigFile(req, res);
+    } else {
+      writeFile(req, res);
+    }
+  }
+
+  private void writeConfigFile(HttpServletRequest req, HttpServletResponse res)
+      throws IOException {
+    File oldFile = configFile(req);
+    File dir = oldFile.getParentFile();
+    File newFile = File.createTempFile(oldFile.getName(), ".new", dir);
+    streamRequestToFile(req, newFile);
+
+    String diff = diff(oldFile, newFile);
+    audit("about to change config file", oldFile.getPath(), diff);
+
+    oldFile.delete();
+    newFile.renameTo(oldFile);
+    audit("changed config file", oldFile.getPath(), diff);
+
+    res.setStatus(HttpServletResponse.SC_NO_CONTENT);
+  }
+
+  private static String diff(File oldFile, File newFile) throws IOException {
+    RawText oldContext = new RawText(oldFile);
+    RawText newContext = new RawText(newFile);
+    UnifiedDiffer differ = new UnifiedDiffer();
+    return differ.diff(oldContext, newContext);
+  }
+
+  private void audit(String what, String path, String diff) {
+    String sessionId = webSession.get().getSessionId();
+    CurrentUser who = webSession.get().getCurrentUser();
+    long when = TimeUtil.nowMs();
+    Multimap<String, String> params = LinkedHashMultimap.create();
+    params.put("plugin", pluginName);
+    params.put("class", ServerConfigServlet.class.getName());
+    params.put("diff", diff);
+    params.put("file", path);
+    auditService.dispatch(new AuditEvent(sessionId, who, what, when, params, null));
+  }
+
+  private boolean isGerritConfig(HttpServletRequest req) throws IOException {
+    File f = configFile(req);
+    return gerrit_config_path.equals(f.getCanonicalPath());
   }
 
   private boolean isValidFile(HttpServletRequest req) throws IOException {
@@ -98,6 +168,11 @@ public class ServerConfigServlet extends HttpServlet {
     res.setContentType("application/octet-stream");
     res.setContentLength((int) f.length());
     OutputStream out = res.getOutputStream();
+    writeStreamToFile(f, out);
+  }
+
+  private static void writeStreamToFile(File f, OutputStream out)
+      throws FileNotFoundException, IOException {
     InputStream in = new FileInputStream(f);
     try {
       ByteStreams.copy(in, out);
@@ -109,8 +184,13 @@ public class ServerConfigServlet extends HttpServlet {
   private void writeFile(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
     res.setStatus(HttpServletResponse.SC_NO_CONTENT);
+    streamRequestToFile(req, configFile(req));
+  }
+
+  private void streamRequestToFile(HttpServletRequest req, File file)
+      throws IOException, FileNotFoundException {
     InputStream in = req.getInputStream();
-    OutputStream out = new FileOutputStream(configFile(req));
+    OutputStream out = new FileOutputStream(file);
     try {
       ByteStreams.copy(in, out);
     } finally {
