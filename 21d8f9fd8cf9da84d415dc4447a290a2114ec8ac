@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7969a4a1_b97bff97",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-23T15:02:34Z",
+      "side": 1,
+      "message": "We need some means to filter out relevant events in an audit listener. I think \"plugin\" could be helpful to distinguish events coming from the core from events fired by plugins. [Could also be promoted to a field of audit event.]\n\"class\" is helpful if you re-route the audit trail to a logger. Many log APIs accept a class-name parameter.",
+      "parentUuid": "7969a4a1_593663fb",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7969a4a1_7933270a",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "7969a4a1_d980b33e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-23T15:02:34Z",
+      "side": 1,
+      "message": "The user is contained in the \"who\" field of the audit event.",
+      "parentUuid": "7969a4a1_7933270a",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7969a4a1_d9419351",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2014-07-23T14:21:21Z",
       "side": 1,
       "message": "Pass the root cause exception to the RuntimeException",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_f985774b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-23T15:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7969a4a1_d9419351",
       "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "595ea0fe_38128974",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-23T15:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595ea0fe_d82a6d99",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7969a4a1_193cebdb",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
         "patchSetId": 1
@@ -98,6 +182,53 @@
         "startChar": 0,
         "endLine": 108,
         "endChar": 30
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595ea0fe_581f3d7b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-23T15:02:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7969a4a1_193cebdb",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 30
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_198b0b61",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-23T15:02:34Z",
+      "side": 1,
+      "message": "Here the changing user is set.",
+      "range": {
+        "startLine": 123,
+        "startChar": 16,
+        "endLine": 123,
+        "endChar": 19
       },
       "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
