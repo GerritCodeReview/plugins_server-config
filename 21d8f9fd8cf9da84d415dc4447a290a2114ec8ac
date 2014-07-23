@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7969a4a1_593663fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 48
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_7933270a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "What about the user who uploaded the change? Why is the username not included in the event? Isn\u0027t it more important than the java class which fires the event?",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_d9419351",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "Pass the root cause exception to the RuntimeException",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595ea0fe_d82a6d99",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "Writing a config file is the same as writing any other file.... so this method name is not really telling the difference. What it does it:\n-  write the file\n- send an audit event\n\nTherefore, it could be named: writeFileAndFireEvent",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 30
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_193cebdb",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "oldFile.delete() is not needed as renameTo will replace the old file with the new file.\n\nActually it is event dangerous to delete the old file and then rename the new one as this is not atomic: if the delete succeeds and rename fails then we are left without the gerrit.config.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 30
+      },
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595ea0fe_f82f31a6",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/UnifiedDiffer.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "missing license header",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "595ea0fe_1815c55b",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/serverconfig/UnifiedDifferTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "missing license header",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_3939afec",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/serverconfig/UnifiedDifferTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-07-23T14:21:21Z",
+      "side": 1,
+      "message": "So you are testing the JGit\u0027s diff and diff formatter?",
+      "revId": "21d8f9fd8cf9da84d415dc4447a290a2114ec8ac",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
