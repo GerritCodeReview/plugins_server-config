@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "595ea0fe_f8d3b13f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/UnifiedDiffer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-25T08:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7969a4a1_192f8b78",
+      "revId": "333c15e3be340ca78ab991f0e099b632c022afa0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595ea0fe_b8c93994",
         "filename": "src/test/java/com/googlesource/gerrit/plugins/serverconfig/UnifiedDifferTest.java",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-25T07:53:16Z",
       "side": 1,
       "message": "missing license header",
+      "revId": "333c15e3be340ca78ab991f0e099b632c022afa0",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7969a4a1_392c4f81",
+        "filename": "src/test/java/com/googlesource/gerrit/plugins/serverconfig/UnifiedDifferTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-25T08:00:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595ea0fe_b8c93994",
       "revId": "333c15e3be340ca78ab991f0e099b632c022afa0",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
