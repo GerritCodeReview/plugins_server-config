@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.serverconfig;
 
+import com.google.common.base.Charsets;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import com.google.common.io.ByteStreams;
@@ -29,7 +30,11 @@ import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import org.eclipse.jgit.diff.RawText;
+import org.eclipse.jgit.errors.ConfigInvalidException;
+import org.eclipse.jgit.storage.file.FileBasedConfig;
+import org.eclipse.jgit.util.FS;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -37,6 +42,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.MessageFormat;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -101,13 +107,43 @@ public class ServerConfigServlet extends HttpServlet {
     File newFile = File.createTempFile(oldFile.getName(), ".new", dir);
     streamRequestToFile(req, newFile);
 
-    String diff = diff(oldFile, newFile);
-    audit("about to change config file", oldFile.getPath(), diff);
+    try {
+      assertConfigFileIsValid(newFile);
 
-    newFile.renameTo(oldFile);
-    audit("changed config file", oldFile.getPath(), diff);
+      String diff = diff(oldFile, newFile);
+      audit("about to change config file", oldFile.getPath(), diff);
 
-    res.setStatus(HttpServletResponse.SC_NO_CONTENT);
+      newFile.renameTo(oldFile);
+      audit("changed config file", oldFile.getPath(), diff);
+
+      res.setStatus(HttpServletResponse.SC_NO_CONTENT);
+    } catch (ConfigInvalidException cause) {
+      newFile.delete();
+      respondInvalidConfig(req, res, cause);
+    }
+  }
+
+  private void respondInvalidConfig(HttpServletRequest req,
+      HttpServletResponse res, ConfigInvalidException cause) throws IOException {
+    String message =
+        MessageFormat.format("Invalid config file {0}: {1}", req.getPathInfo(),
+            cause.getMessage());
+    res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+    res.setContentType("application/octet-stream");
+    res.setContentLength(message.length());
+    byte[] bytes = message.getBytes(Charsets.UTF_8);
+    ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+    OutputStream out = res.getOutputStream();
+    try {
+      ByteStreams.copy(in, out);
+    } finally {
+      in.close();
+    }
+  }
+
+  private void assertConfigFileIsValid(File newFile) throws ConfigInvalidException, IOException {
+    FileBasedConfig config = new FileBasedConfig(newFile, FS.DETECTED);
+    new ConfigFileValidator(config).assertValid();
   }
 
   private static String diff(File oldFile, File newFile) throws IOException {
