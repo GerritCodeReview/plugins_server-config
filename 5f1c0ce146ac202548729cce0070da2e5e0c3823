@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d61dff5d_34f590eb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-31T13:47:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7969a4a1_b9169fb1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 8
+      },
+      "revId": "5f1c0ce146ac202548729cce0070da2e5e0c3823",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595ea0fe_b81699b1",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ConfigFileValidator.java",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "d61dff5d_14fa94d9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ConfigFileValidator.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-31T13:47:35Z",
+      "side": 1,
+      "message": "There were no tests for config loading but for exception handling.",
+      "parentUuid": "595ea0fe_b81699b1",
+      "revId": "5f1c0ce146ac202548729cce0070da2e5e0c3823",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595ea0fe_d80b4d88",
         "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
         "patchSetId": 1
@@ -53,6 +95,24 @@
       "writtenOn": "2014-07-30T16:01:56Z",
       "side": 1,
       "message": "Inline these these two lines here:\n\n  FileBasedConfig config \u003d new FileBasedConfig(...)\n  config.load();\n\nand delete the ConfigFileValidator and its test?",
+      "revId": "5f1c0ce146ac202548729cce0070da2e5e0c3823",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7980c479_213c0edc",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-07-31T13:47:35Z",
+      "side": 1,
+      "message": "Done, as separating the concerns seems to have negative impact on the readability.",
+      "parentUuid": "595ea0fe_d80b4d88",
       "revId": "5f1c0ce146ac202548729cce0070da2e5e0c3823",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
