@@ -116,6 +116,24 @@
       "revId": "5f1c0ce146ac202548729cce0070da2e5e0c3823",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7980c479_81695ac2",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-08-01T09:36:37Z",
+      "side": 1,
+      "message": "The most important exception handling place (line 120 in this class) wasn\u0027t considered in the test anyway.",
+      "parentUuid": "7980c479_213c0edc",
+      "revId": "5f1c0ce146ac202548729cce0070da2e5e0c3823",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
