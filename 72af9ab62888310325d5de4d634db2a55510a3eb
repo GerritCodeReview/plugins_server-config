@@ -46,6 +46,30 @@
       "revId": "72af9ab62888310325d5de4d634db2a55510a3eb",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7980c479_e1cea698",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2014-08-01T16:12:15Z",
+      "side": 1,
+      "message": "I see :-(\nHowever, it still feels strange that we must know how JGit internally wraps exceptions and apply this knowledge here...",
+      "parentUuid": "7980c479_a1c49e7a",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "72af9ab62888310325d5de4d634db2a55510a3eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
