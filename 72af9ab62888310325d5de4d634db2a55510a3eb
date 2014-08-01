@@ -22,6 +22,30 @@
       "revId": "72af9ab62888310325d5de4d634db2a55510a3eb",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7980c479_a1c49e7a",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-08-01T16:04:27Z",
+      "side": 1,
+      "message": "Because FileBasedConfig wrap\u0027s the ConfigInvalidException with a meaningful explanation with another ConfigInvalidException with pretty meaningless cannotReadFile message.",
+      "parentUuid": "d61dff5d_b4088048",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 31
+      },
+      "revId": "72af9ab62888310325d5de4d634db2a55510a3eb",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
