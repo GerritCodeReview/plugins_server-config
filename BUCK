@@ -12,3 +12,15 @@ gerrit_plugin(
     'Gerrit-HttpModule: com.googlesource.gerrit.plugins.serverconfig.HttpModule',
   ]
 )
+
+java_test(
+  name = 'server-config_tests',
+  srcs = glob(['src/test/java/**/*.java']),
+  labels = ['server-config-plugin'],
+  deps = [
+    ':server-config__plugin',
+    '//lib/jgit:jgit',
+    '//lib:junit',
+  ],
+  source_under_test = [':server-config__plugin'],
+)
