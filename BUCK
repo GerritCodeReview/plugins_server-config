@@ -1,7 +1,4 @@
-include_defs('//lib/maven.defs')
-
-API_VERSION = '2.9-SNAPSHOT'
-REPO = MAVEN_LOCAL
+include_defs('//bucklets/gerrit_plugin.bucklet')
 
 gerrit_plugin(
   name = 'server-config',
@@ -11,4 +8,23 @@ gerrit_plugin(
     'Gerrit-PluginName: server-config',
     'Gerrit-HttpModule: com.googlesource.gerrit.plugins.serverconfig.HttpModule',
   ]
+)
+
+# this is required for bucklets/tools/eclipse/project.py to work
+# not sure, if this does something useful in standalone context
+java_library(
+  name = 'classpath',
+  deps = [':server-config__plugin'],
+)
+
+java_test(
+  name = 'server-config_tests',
+  srcs = glob(['src/test/java/**/*.java']),
+  labels = ['server-config-plugin'],
+  deps = [
+    ':server-config__plugin',
+    '//lib/jgit:jgit',
+    '//lib:junit',
+  ],
+  source_under_test = [':server-config__plugin'],
 )
