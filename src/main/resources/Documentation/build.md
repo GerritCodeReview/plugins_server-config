@@ -50,6 +50,12 @@ The output is created in
   buck-out/gen/server-config.jar
 ```
 
+Test are executed with
+
+```
+  buck test
+```
+
 
 ### Build in Gerrit tree
 
@@ -70,6 +76,12 @@ This project can be imported into the Eclipse IDE:
 
 ```
   ./tools/eclipse/project.py
+```
+
+Test are executed with
+
+```
+  buck test --include server-config-plugin
 ```
 
 Maven
