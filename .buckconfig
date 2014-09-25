@@ -1,9 +1,6 @@
 [alias]
   plugin = //:server-config
 
-[buildfile]
-  includes = //tools/buck.defs
-
 [java]
   src_roots = java, resources
 
