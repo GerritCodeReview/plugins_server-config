@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90646fc9_9a762d56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-25T15:18:23Z",
+      "side": 1,
+      "message": "Well the last patch set of this change converted standalone build mode to standalone build mode using bucklets + activated unit tests. I would prefer to separate these in two changes: 1. bucklets conversion. 2. unite test activation. That way you probably don#t need to duplicate maven jar in lib directory.",
+      "revId": "7633e5e99b391ac9fb3d5e9ab7fa78ad107325e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
