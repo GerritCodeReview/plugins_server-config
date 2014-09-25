@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "90646fc9_da70a55b",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-09-25T16:06:43Z",
+      "side": 1,
+      "message": "What is .buckd?",
+      "parentUuid": "90646fc9_ba7bf13c",
+      "revId": "7633e5e99b391ac9fb3d5e9ab7fa78ad107325e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90646fc9_9a762d56",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "b095f3be_9ba46baa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-09-25T16:06:43Z",
+      "side": 1,
+      "message": "Split the concerns. So the lib duplication is in this change only.",
+      "parentUuid": "90646fc9_9a762d56",
+      "revId": "7633e5e99b391ac9fb3d5e9ab7fa78ad107325e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b095f3be_5bdae321",
         "filename": "lib/BUCK",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2014-09-25T15:20:49Z",
       "side": 1,
       "message": "Unneeded new lines.",
+      "revId": "7633e5e99b391ac9fb3d5e9ab7fa78ad107325e3",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_bba92781",
+        "filename": "lib/BUCK",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-09-25T16:06:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b095f3be_5bdae321",
       "revId": "7633e5e99b391ac9fb3d5e9ab7fa78ad107325e3",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
