@@ -16,3 +16,15 @@ java_library(
   name = 'classpath',
   deps = [':server-config__plugin'],
 )
+
+java_test(
+  name = 'server-config_tests',
+  srcs = glob(['src/test/java/**/*.java']),
+  labels = ['server-config-plugin'],
+  deps = [
+    ':server-config__plugin',
+    '//lib/jgit:jgit',
+    '//lib:junit',
+  ],
+  source_under_test = [':server-config__plugin'],
+)
