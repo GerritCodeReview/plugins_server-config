@@ -11,3 +11,7 @@ maven_jar(
   repository = REPO,
   license = 'Apache2.0',
 )
+<<<<<<< HEAD
+=======
+
+>>>>>>> f7f6294... Make tests executable with BUCK
