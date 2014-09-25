@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b095f3be_7bb07fdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-25T18:35:28Z",
+      "side": 1,
+      "message": "Why? The preferred way to do it in gerrit is: \"Do it right in this change\", and not \"Do it wrong first and fix it in follow-up change\". The later way is for Crucible users (post-merge review tool from Atlassian) users.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "76948491a803427a7d17e124a5f101da429d3674",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90646fc9_5a657595",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-25T18:35:28Z",
+      "side": 1,
+      "message": "Mention here (and in documentation?) that tests can be executed with:\n\n  $ buck test --include server-config-plugin\n\nin both build modes: in tree and standalone. Of course --include server-config-plugin part is uninteresting in standalone mode, but very useful in tree mode.",
+      "revId": "76948491a803427a7d17e124a5f101da429d3674",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_5bb3c3e9",
+        "filename": "BUCK",
+        "patchSetId": 8
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-25T18:35:28Z",
+      "side": 1,
+      "message": "As for my previous comment you don\u0027t need it any more, after this was merged [1]. Now you can say this:\n\n deps \u003d GERRIT_PLUGIN_API + [\n    \u0027:server-config__plugin\u0027,\n    \u0027//lib:junit\u0027,\n  ],\n\nin both modes: in tree and standalone. (Untested but i think this shoud work, make sure your gerrit tree has [1]).\n\n [1] https://gerrit-review.googlesource.com/58724",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "76948491a803427a7d17e124a5f101da429d3674",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_3bb6f7da",
+        "filename": "lib/jgit/BUCK",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-25T18:35:28Z",
+      "side": 1,
+      "message": "not needed.",
+      "revId": "76948491a803427a7d17e124a5f101da429d3674",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
