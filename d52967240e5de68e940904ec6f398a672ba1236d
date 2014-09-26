@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90646fc9_1a8a1dcd",
+        "filename": "BUCK",
+        "patchSetId": 11
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T12:36:48Z",
+      "side": 1,
+      "message": "You still duplicate jgit? Why? What you want is: GERRIT_PLUGIN_API \n\n  java_test(\n    name \u003d \u0027server-config_tests\u0027,\n    srcs \u003d glob([\u0027src/test/java/**/*.java\u0027]),\n    labels \u003d [\u0027server-config-plugin\u0027],\n    deps \u003d GERRIT_PLUGIN_API + [\n      :server-config__plugin\u0027,\n      \u0027//lib:junit\u0027,\n    ],\n  [...]",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 22
+      },
+      "revId": "d52967240e5de68e940904ec6f398a672ba1236d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_7b5f9f9f",
+        "filename": "lib/jgit/BUCK",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T12:36:48Z",
+      "side": 1,
+      "message": "You don\u0027t need it. Bad rebase? You already said Done on my previous comment that this file is not needed, here [1].\n\n [1] https://gerrit-review.googlesource.com/#/c/60323/8/lib/jgit/BUCK",
+      "revId": "d52967240e5de68e940904ec6f398a672ba1236d",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
