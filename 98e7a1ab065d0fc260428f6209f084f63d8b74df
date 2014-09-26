@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b095f3be_3b68b76e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-09-26T07:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90646fc9_3a68c16e",
+      "revId": "98e7a1ab065d0fc260428f6209f084f63d8b74df",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b095f3be_fba3af9c",
         "filename": "lib/gerrit/BUCK",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-09-25T18:14:47Z",
       "side": 1,
       "message": "Optional: remove or uncomment this line, because it might be outdated. Whe sha1 isn\u0027t specifed then it\u0027s not checked. When REPO changed from local to remote then it makes sense to add sha1 again.",
+      "revId": "98e7a1ab065d0fc260428f6209f084f63d8b74df",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_5b658395",
+        "filename": "lib/gerrit/BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-09-26T07:29:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b095f3be_fba3af9c",
       "revId": "98e7a1ab065d0fc260428f6209f084f63d8b74df",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
