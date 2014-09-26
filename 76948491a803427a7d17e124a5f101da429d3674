@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "90646fc9_9a954df1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1007114
+      },
+      "writtenOn": "2014-09-26T12:21:34Z",
+      "side": 1,
+      "message": "Well I was talking about testing stuff dependencies: easymock, powermock, objenesis, ...\n\nIf you think they obviously need to be provided I\u0027ll remove the disclaimer from the commit message.",
+      "parentUuid": "90646fc9_3ada81fa",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 17
+      },
+      "revId": "76948491a803427a7d17e124a5f101da429d3674",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90646fc9_5a657595",
         "filename": "/COMMIT_MSG",
         "patchSetId": 8
