@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "90646fc9_7abb19a8",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T08:03:12Z",
+      "side": 1,
+      "message": "Why not to adjust quota project name to server-config? Here and in all places below.",
+      "range": {
+        "startLine": 23,
+        "startChar": 15,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "c0d9c56cf5d4e07929dcc6229040135050a9bd48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_9b9f0b3e",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T08:03:12Z",
+      "side": 1,
+      "message": "Please add also new section about creating the link to .watchmanconfig file (was recently introduced to bucklets and is needed to teach watchman to skip watching buck-out directory). Would be nice to update it in quota plugin description as well:\n\n  Add link to the .watchmanconfig file:\n  ```\n    cd server-config \u0026\u0026 ln -s bucklets/watchmanconfig .watchmanconfig\n  ```",
+      "revId": "c0d9c56cf5d4e07929dcc6229040135050a9bd48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "90646fc9_9ac8ed39",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T08:03:12Z",
+      "side": 1,
+      "message": "server-config.jar",
+      "range": {
+        "startLine": 45,
+        "startChar": 15,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "c0d9c56cf5d4e07929dcc6229040135050a9bd48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_bba4c790",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T08:03:12Z",
+      "side": 1,
+      "message": "server-config",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 26
+      },
+      "revId": "c0d9c56cf5d4e07929dcc6229040135050a9bd48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b095f3be_dba99367",
+        "filename": "src/main/resources/Documentation/build.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-09-26T08:03:12Z",
+      "side": 1,
+      "message": "adjust this as well.",
+      "range": {
+        "startLine": 61,
+        "startChar": 2,
+        "endLine": 61,
+        "endChar": 38
+      },
+      "revId": "c0d9c56cf5d4e07929dcc6229040135050a9bd48",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
