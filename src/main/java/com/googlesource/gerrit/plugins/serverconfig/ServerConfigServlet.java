@@ -21,12 +21,12 @@ import com.google.common.io.ByteStreams;
 import com.google.gerrit.audit.AuditEvent;
 import com.google.gerrit.audit.AuditService;
 import com.google.gerrit.extensions.annotations.PluginName;
+import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.httpd.WebSession;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.gerrit.server.util.TimeUtil;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import org.eclipse.jgit.diff.RawText;
@@ -61,11 +61,11 @@ public class ServerConfigServlet extends HttpServlet {
   private final File static_dir;
   private final String gerrit_config_path;
   private final AuditService auditService;
-  private final Provider<WebSession> webSession;
+  private final DynamicItem<WebSession> webSession;
   private final String pluginName;
 
   @Inject
-  ServerConfigServlet(SitePaths sitePaths, Provider<WebSession> webSession,
+  ServerConfigServlet(SitePaths sitePaths, DynamicItem<WebSession> webSession,
       AuditService auditService, @PluginName String pluginName) {
     this.webSession = webSession;
     this.auditService = auditService;
