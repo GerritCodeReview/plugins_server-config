@@ -16,3 +16,14 @@ java_library(
   name = 'classpath',
   deps = [':server-config__plugin'],
 )
+
+java_test(
+  name = 'server-config_tests',
+  srcs = glob(['src/test/java/**/*.java']),
+  labels = ['server-config-plugin'],
+  deps = GERRIT_PLUGIN_API + [
+    ':server-config__plugin',
+    '//lib:junit',
+  ],
+  source_under_test = [':server-config__plugin'],
+)
