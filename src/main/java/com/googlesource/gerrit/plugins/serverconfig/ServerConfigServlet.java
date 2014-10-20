@@ -186,7 +186,7 @@ public class ServerConfigServlet extends HttpServlet {
   }
 
   private File configFile(HttpServletRequest req) {
-    return new File(site_path, req.getPathInfo());
+    return new File(site_path, req.getServletPath() + req.getPathInfo());
   }
 
   private boolean isParent(File parent, File child) throws IOException {

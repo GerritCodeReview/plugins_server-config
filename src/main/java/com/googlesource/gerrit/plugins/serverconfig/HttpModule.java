@@ -20,6 +20,6 @@ class HttpModule extends ServletModule {
   @Override
   protected void configureServlets() {
     filter("/*").through(HideFromNonAdmins.class);
-    serve("/*").with(ServerConfigServlet.class);
+    serve("/etc/*", "/static/*").with(ServerConfigServlet.class);
   }
 }
