@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a148387_c4fe5ec4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2014-11-13T07:45:25Z",
+      "side": 1,
+      "message": "We started to reference abbreviated Change-Id because it\u0027s linkified and this here is not.",
+      "range": {
+        "startLine": 9,
+        "startChar": 7,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "cd16cd6cd96a7ae384163085cb27e0d22f1590af",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
