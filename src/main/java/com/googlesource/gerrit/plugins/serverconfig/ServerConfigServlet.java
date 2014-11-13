@@ -20,12 +20,12 @@ import com.google.common.collect.Multimap;
 import com.google.common.io.ByteStreams;
 import com.google.gerrit.audit.AuditEvent;
 import com.google.gerrit.audit.AuditService;
+import com.google.gerrit.common.TimeUtil;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.httpd.WebSession;
 import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.config.SitePaths;
-import com.google.gerrit.server.util.TimeUtil;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
