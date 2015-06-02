@@ -22,6 +22,30 @@
       "revId": "9f626a54229edbf5db42d3648892c7ecd163562f",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3962e8ee_c94a3176",
+        "filename": "BUCK",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1012155
+      },
+      "writtenOn": "2015-06-02T16:22:38Z",
+      "side": 1,
+      "message": "To not duplicate this discussion ... let\u0027s discuss on\nI7b6d46f1016a4dcb68f9b5be1dfb294f2b53382f and then move forward with\nthe outcome from there.",
+      "parentUuid": "1959a445_48a63fcb",
+      "range": {
+        "startLine": 23,
+        "startChar": 12,
+        "endLine": 23,
+        "endChar": 27
+      },
+      "revId": "9f626a54229edbf5db42d3648892c7ecd163562f",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
