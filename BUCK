@@ -20,7 +20,7 @@ java_library(
 java_test(
   name = 'server-config_tests',
   srcs = glob(['src/test/java/**/*.java']),
-  labels = ['server-config-plugin'],
+  labels = ['server-config'],
   deps = GERRIT_PLUGIN_API + [
     ':server-config__plugin',
     '//lib:junit',
