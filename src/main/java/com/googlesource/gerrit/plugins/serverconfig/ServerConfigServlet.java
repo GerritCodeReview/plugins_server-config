@@ -70,11 +70,11 @@ public class ServerConfigServlet extends HttpServlet {
     this.webSession = webSession;
     this.auditService = auditService;
     this.pluginName = pluginName;
-    this.site_path = sitePaths.site_path;
-    this.etc_dir = sitePaths.etc_dir;
-    this.static_dir = sitePaths.static_dir;
+    this.site_path = sitePaths.site_path.toFile();
+    this.etc_dir = sitePaths.etc_dir.toFile();
+    this.static_dir = sitePaths.static_dir.toFile();
     try {
-      this.gerrit_config_path = sitePaths.gerrit_config.getCanonicalPath();
+      this.gerrit_config_path = sitePaths.gerrit_config.toFile().getCanonicalPath();
     } catch (IOException e) {
       throw new RuntimeException(e);
     }
