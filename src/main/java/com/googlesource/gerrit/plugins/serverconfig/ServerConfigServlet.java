@@ -162,7 +162,7 @@ public class ServerConfigServlet extends HttpServlet {
 
   private void audit(String what, String path, String diff) {
     String sessionId = webSession.get().getSessionId();
-    CurrentUser who = webSession.get().getCurrentUser();
+    CurrentUser who = webSession.get().getUser();
     long when = TimeUtil.nowMs();
     Multimap<String, Object> params = LinkedHashMultimap.create();
     params.put("plugin", pluginName);
