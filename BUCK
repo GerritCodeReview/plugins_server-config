@@ -21,9 +21,8 @@ java_test(
   name = 'server-config_tests',
   srcs = glob(['src/test/java/**/*.java']),
   labels = ['server-config'],
-  deps = GERRIT_PLUGIN_API + [
+  deps = GERRIT_PLUGIN_API + GERRIT_TESTS + [
     ':server-config__plugin',
     '//lib:junit',
-  ],
-  source_under_test = [':server-config__plugin'],
+  ]
 )
