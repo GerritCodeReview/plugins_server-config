@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fac16fc3_c7c9c04b",
+        "filename": "BUCK",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1012987
+      },
+      "writtenOn": "2016-12-20T14:43:42Z",
+      "side": 1,
+      "message": "is this still required since you added GERRIT_TESTS?",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "625e7776d491ae699e5eae2f94175a0d2d260e31",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
