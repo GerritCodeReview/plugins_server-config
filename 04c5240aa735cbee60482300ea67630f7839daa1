@@ -22,6 +22,30 @@
       "revId": "04c5240aa735cbee60482300ea67630f7839daa1",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d57da35_4f147a11",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "Feb 5, 2017 12:31:41 PM",
+      "side": 1,
+      "message": "Woops sorry, thanks for catching that :)",
+      "parentUuid": "5213b7d7_9af11f3b",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "04c5240aa735cbee60482300ea67630f7839daa1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
