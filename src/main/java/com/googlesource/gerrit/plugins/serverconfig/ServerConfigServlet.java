@@ -16,7 +16,9 @@ package com.googlesource.gerrit.plugins.serverconfig;
 
 import com.google.common.base.Charsets;
 import com.google.common.collect.LinkedHashMultimap;
+import com.google.common.collect.ListMultimap;
 import com.google.common.collect.Multimap;
+import com.google.common.collect.MultimapBuilder;
 import com.google.common.io.ByteStreams;
 import com.google.gerrit.audit.AuditEvent;
 import com.google.gerrit.audit.AuditService;
@@ -164,7 +166,8 @@ public class ServerConfigServlet extends HttpServlet {
     String sessionId = webSession.get().getSessionId();
     CurrentUser who = webSession.get().getUser();
     long when = TimeUtil.nowMs();
-    Multimap<String, Object> params = LinkedHashMultimap.create();
+    ListMultimap<String, Object> params =
+        MultimapBuilder.hashKeys().arrayListValues().build();
     params.put("plugin", pluginName);
     params.put("class", ServerConfigServlet.class);
     params.put("diff", diff);
