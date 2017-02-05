@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5213b7d7_9af11f3b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "Feb 5, 2017 12:19:26 PM",
+      "side": 1,
+      "message": "May be remove this extra character?",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 47
+      },
+      "revId": "04c5240aa735cbee60482300ea67630f7839daa1",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
