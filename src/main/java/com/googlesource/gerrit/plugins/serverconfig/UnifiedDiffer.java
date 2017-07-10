@@ -34,8 +34,9 @@ public class UnifiedDiffer {
     EditList editList = algorithm.diff(RawTextComparator.DEFAULT, v0, v1);
 
     ByteArrayOutputStream os = new ByteArrayOutputStream();
-    DiffFormatter formatter = new DiffFormatter(os);
-    formatter.format(editList, v0, v1);
+    try (DiffFormatter formatter = new DiffFormatter(os)) {
+      formatter.format(editList, v0, v1);
+    }
 
     return os.toString(CHARSET_NAME);
   }
