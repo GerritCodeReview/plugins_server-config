@@ -108,7 +108,7 @@ public class ServerConfigServlet extends HttpServlet {
 
   private void writeFileAndFireAuditEvent(HttpServletRequest req,
       HttpServletResponse res) throws IOException {
-    File oldFile = configFile(req);
+    File oldFile = resolveFile(req);
     File dir = oldFile.getParentFile();
     File newFile = File.createTempFile(oldFile.getName(), ".new", dir);
     streamRequestToFile(req, newFile);
@@ -173,19 +173,19 @@ public class ServerConfigServlet extends HttpServlet {
   }
 
   private boolean isGerritConfig(HttpServletRequest req) throws IOException {
-    File f = configFile(req);
+    File f = resolveFile(req);
     return gerrit_config_path.equals(f.getCanonicalPath());
   }
 
   private boolean isValidFile(HttpServletRequest req) throws IOException {
-    File f = configFile(req);
+    File f = resolveFile(req);
     if (!f.isFile()) {
       return false;
     }
     return isParent(etc_dir, f) || isParent(static_dir, f);
   }
 
-  private File configFile(HttpServletRequest req) {
+  private File resolveFile(HttpServletRequest req) {
     return new File(site_path, req.getServletPath() + req.getPathInfo());
   }
 
@@ -205,7 +205,7 @@ public class ServerConfigServlet extends HttpServlet {
 
   private void streamFile(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    File f = configFile(req);
+    File f = resolveFile(req);
     res.setStatus(HttpServletResponse.SC_OK);
     res.setContentType("application/octet-stream");
     res.setContentLength((int) f.length());
@@ -218,7 +218,7 @@ public class ServerConfigServlet extends HttpServlet {
   private void writeFile(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
     res.setStatus(HttpServletResponse.SC_NO_CONTENT);
-    streamRequestToFile(req, configFile(req));
+    streamRequestToFile(req, resolveFile(req));
   }
 
   private void streamRequestToFile(HttpServletRequest req, File file)
