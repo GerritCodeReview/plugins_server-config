@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f3b6a20_7d611c5f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/ServerConfigServlet.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1003873
+      },
+      "writtenOn": "2017-07-10T14:32:48Z",
+      "side": 1,
+      "message": "For a request on \"/plugins/server-config/etc/gerrit.config\", the req.getServletPath() will return \"/etc\" and req.getPathInfo() will return \"/gerrit.config\". Therefore, the concatenation of the two is:\n\n  /etc/gerrit.config\n\nwhich is an absolute path. Therefore, sitePaths.resolve(\"/etc/gerrit.config\") returns:\n\n  /etc/gerrit.config\n\nwhich is not under the site_path and thus isValidPath will return false.\n\nIn the previous version: new File(site_path, req.getServletPath() + req.getPathInfo()), somehow handled that absolute path as a relative path inside the site_path. We shouldn\u0027t have relied on that.\n\nRemoving a leading \"/\" from the parameter of sitePaths.resolve resolves the issue.",
+      "revId": "289e4b733db7e2fbd6b0ee80a12c200be83cae9e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
+    }
+  ]
+}
