@@ -146,12 +146,9 @@ public class ServerConfigServlet extends HttpServlet {
     res.setContentType("application/octet-stream");
     res.setContentLength(message.length());
     byte[] bytes = message.getBytes(Charsets.UTF_8);
-    ByteArrayInputStream in = new ByteArrayInputStream(bytes);
     OutputStream out = res.getOutputStream();
-    try {
+    try (ByteArrayInputStream in = new ByteArrayInputStream(bytes)) {
       ByteStreams.copy(in, out);
-    } finally {
-      in.close();
     }
   }
 
@@ -213,11 +210,8 @@ public class ServerConfigServlet extends HttpServlet {
     res.setContentType("application/octet-stream");
     res.setContentLength((int) f.length());
     OutputStream out = res.getOutputStream();
-    InputStream in = new FileInputStream(f);
-    try {
+    try (InputStream in = new FileInputStream(f)) {
       ByteStreams.copy(in, out);
-    } finally {
-      in.close();
     }
   }
 
@@ -230,11 +224,8 @@ public class ServerConfigServlet extends HttpServlet {
   private void streamRequestToFile(HttpServletRequest req, File file)
       throws IOException, FileNotFoundException {
     InputStream in = req.getInputStream();
-    OutputStream out = new FileOutputStream(file);
-    try {
+    try (OutputStream out = new FileOutputStream(file)) {
       ByteStreams.copy(in, out);
-    } finally {
-      out.close();
     }
   }
 }
