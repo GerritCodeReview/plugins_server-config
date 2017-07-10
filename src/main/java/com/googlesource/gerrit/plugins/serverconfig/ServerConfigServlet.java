@@ -78,7 +78,7 @@ public class ServerConfigServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isValidPath(req)) {
+    if (!isAllowedPath(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -88,7 +88,7 @@ public class ServerConfigServlet extends HttpServlet {
   @Override
   public void doPut(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isValidPath(req)) {
+    if (!isAllowedPath(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -169,7 +169,7 @@ public class ServerConfigServlet extends HttpServlet {
     return Files.isSameFile(sitePaths.gerrit_config, resolvePath(req));
   }
 
-  private boolean isValidPath(HttpServletRequest req) throws IOException {
+  private boolean isAllowedPath(HttpServletRequest req) throws IOException {
     Path p = resolvePath(req);
     if (!Files.isRegularFile(p)) {
       return false;
