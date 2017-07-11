@@ -1,7 +1,7 @@
 Build
 =====
 
-This plugin can be built with Buck or Maven.
+This plugin can be built with Bazel or Maven.
 
 Clone (or link) this plugin to the `plugins` directory of Gerrit's source tree.
 
