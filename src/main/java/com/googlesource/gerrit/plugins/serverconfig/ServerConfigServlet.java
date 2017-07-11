@@ -14,6 +14,7 @@
 
 package com.googlesource.gerrit.plugins.serverconfig;
 
+import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.ListMultimap;
@@ -46,6 +47,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.MessageFormat;
 
 import javax.servlet.http.HttpServlet;
@@ -58,10 +61,7 @@ public class ServerConfigServlet extends HttpServlet {
   private static final Logger log = LoggerFactory
       .getLogger(ServerConfigServlet.class);
 
-  private final File site_path;
-  private final File etc_dir;
-  private final File static_dir;
-  private final String gerrit_config_path;
+  private final SitePaths sitePaths;
   private final AuditService auditService;
   private final DynamicItem<WebSession> webSession;
   private final String pluginName;
@@ -72,20 +72,13 @@ public class ServerConfigServlet extends HttpServlet {
     this.webSession = webSession;
     this.auditService = auditService;
     this.pluginName = pluginName;
-    this.site_path = sitePaths.site_path.toFile();
-    this.etc_dir = sitePaths.etc_dir.toFile();
-    this.static_dir = sitePaths.static_dir.toFile();
-    try {
-      this.gerrit_config_path = sitePaths.gerrit_config.toFile().getCanonicalPath();
-    } catch (IOException e) {
-      throw new RuntimeException(e);
-    }
+    this.sitePaths = sitePaths;
   }
 
   @Override
   public void doGet(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isValidFile(req)) {
+    if (!isAllowedPath(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -95,7 +88,7 @@ public class ServerConfigServlet extends HttpServlet {
   @Override
   public void doPut(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    if (!isValidFile(req)) {
+    if (!isAllowedPath(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
     }
@@ -108,7 +101,7 @@ public class ServerConfigServlet extends HttpServlet {
 
   private void writeFileAndFireAuditEvent(HttpServletRequest req,
       HttpServletResponse res) throws IOException {
-    File oldFile = configFile(req);
+    File oldFile = resolvePath(req).toFile();
     File dir = oldFile.getParentFile();
     File newFile = File.createTempFile(oldFile.getName(), ".new", dir);
     streamRequestToFile(req, newFile);
@@ -146,12 +139,9 @@ public class ServerConfigServlet extends HttpServlet {
     res.setContentType("application/octet-stream");
     res.setContentLength(message.length());
     byte[] bytes = message.getBytes(Charsets.UTF_8);
-    ByteArrayInputStream in = new ByteArrayInputStream(bytes);
     OutputStream out = res.getOutputStream();
-    try {
+    try (ByteArrayInputStream in = new ByteArrayInputStream(bytes)) {
       ByteStreams.copy(in, out);
-    } finally {
-      in.close();
     }
   }
 
@@ -176,31 +166,30 @@ public class ServerConfigServlet extends HttpServlet {
   }
 
   private boolean isGerritConfig(HttpServletRequest req) throws IOException {
-    File f = configFile(req);
-    return gerrit_config_path.equals(f.getCanonicalPath());
+    return Files.isSameFile(sitePaths.gerrit_config, resolvePath(req));
   }
 
-  private boolean isValidFile(HttpServletRequest req) throws IOException {
-    File f = configFile(req);
-    if (!f.isFile()) {
+  private boolean isAllowedPath(HttpServletRequest req) throws IOException {
+    Path p = resolvePath(req);
+    if (!Files.isRegularFile(p)) {
       return false;
     }
-    return isParent(etc_dir, f) || isParent(static_dir, f);
+    return isParent(sitePaths.etc_dir, p) || isParent(sitePaths.static_dir, p);
   }
 
-  private File configFile(HttpServletRequest req) {
-    return new File(site_path, req.getServletPath() + req.getPathInfo());
+  private Path resolvePath(HttpServletRequest req) {
+    return sitePaths.resolve(CharMatcher.is('/').trimLeadingFrom(
+        req.getServletPath() + req.getPathInfo()));
   }
 
-  private boolean isParent(File parent, File child) throws IOException {
-    File p = parent.getCanonicalFile();
-    File c = child.getCanonicalFile();
+  private boolean isParent(Path parent, Path child) throws IOException {
+    Path p = child;
     for (;;) {
-      c = c.getParentFile();
-      if (c == null) {
+      p = p.getParent();
+      if (p == null) {
         return false;
       }
-      if (c.equals(p)) {
+      if (Files.isSameFile(p, parent)) {
         return true;
       }
     }
@@ -208,33 +197,27 @@ public class ServerConfigServlet extends HttpServlet {
 
   private void streamFile(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
-    File f = configFile(req);
+    File f = resolvePath(req).toFile();
     res.setStatus(HttpServletResponse.SC_OK);
     res.setContentType("application/octet-stream");
     res.setContentLength((int) f.length());
     OutputStream out = res.getOutputStream();
-    InputStream in = new FileInputStream(f);
-    try {
+    try (InputStream in = new FileInputStream(f)) {
       ByteStreams.copy(in, out);
-    } finally {
-      in.close();
     }
   }
 
   private void writeFile(HttpServletRequest req, HttpServletResponse res)
       throws IOException {
     res.setStatus(HttpServletResponse.SC_NO_CONTENT);
-    streamRequestToFile(req, configFile(req));
+    streamRequestToFile(req, resolvePath(req).toFile());
   }
 
   private void streamRequestToFile(HttpServletRequest req, File file)
       throws IOException, FileNotFoundException {
     InputStream in = req.getInputStream();
-    OutputStream out = new FileOutputStream(file);
-    try {
+    try (OutputStream out = new FileOutputStream(file)) {
       ByteStreams.copy(in, out);
-    } finally {
-      out.close();
     }
   }
 }
