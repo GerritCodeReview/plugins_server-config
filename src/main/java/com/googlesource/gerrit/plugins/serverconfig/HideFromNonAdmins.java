@@ -14,7 +14,11 @@
 
 package com.googlesource.gerrit.plugins.serverconfig;
 
+import com.google.gerrit.extensions.restapi.AuthException;
 import com.google.gerrit.server.CurrentUser;
+import com.google.gerrit.server.permissions.GlobalPermission;
+import com.google.gerrit.server.permissions.PermissionBackend;
+import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
@@ -35,17 +39,21 @@ import javax.servlet.http.HttpServletResponse;
 @Singleton
 public class HideFromNonAdmins implements Filter {
 
-  private Provider<CurrentUser> user;
+  private final Provider<CurrentUser> user;
+  private final PermissionBackend permissionBackend;
 
   @Inject
-  public HideFromNonAdmins(Provider<CurrentUser> user) {
+  public HideFromNonAdmins(Provider<CurrentUser> user, PermissionBackend permissionBackend) {
     this.user = user;
+    this.permissionBackend = permissionBackend;
   }
 
   @Override
   public void doFilter(ServletRequest req, ServletResponse rsp,
       FilterChain chain) throws IOException, ServletException {
-    if (!user.get().getCapabilities().canAdministrateServer()) {
+    try {
+      permissionBackend.user(user).check(GlobalPermission.ADMINISTRATE_SERVER);
+    } catch (AuthException | PermissionBackendException e) {
       ((HttpServletResponse) rsp).sendError(HttpServletResponse.SC_NOT_FOUND,
           "Not Found");
       return;
