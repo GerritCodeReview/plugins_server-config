@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ff2abc9_7a7a9d34",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2017-11-06T10:50:45Z",
+      "side": 1,
+      "message": "private final (here and below)",
+      "revId": "f3760e70784a09c04f8a463824fc9c24483a1f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3677dc10_dd19380f",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1026112
+      },
+      "writtenOn": "2017-11-06T10:50:45Z",
+      "side": 1,
+      "message": "Where does caller come from? Shouldn\u0027t this be \u0027user\u0027?",
+      "range": {
+        "startLine": 55,
+        "startChar": 29,
+        "endLine": 55,
+        "endChar": 35
+      },
+      "revId": "f3760e70784a09c04f8a463824fc9c24483a1f1e",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
