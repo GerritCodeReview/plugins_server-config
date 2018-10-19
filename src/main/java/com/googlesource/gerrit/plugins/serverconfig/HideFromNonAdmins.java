@@ -6,6 +6,7 @@
 //
 // http://www.apache.org/licenses/LICENSE-2.0
 //
+
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -20,7 +21,6 @@ import com.google.gerrit.server.permissions.GlobalPermission;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import java.io.IOException;
@@ -39,11 +39,11 @@ import javax.servlet.http.HttpServletResponse;
 @Singleton
 public class HideFromNonAdmins implements Filter {
 
-  private final Provider<CurrentUser> user;
+  private final CurrentUser user;
   private final PermissionBackend permissionBackend;
 
   @Inject
-  public HideFromNonAdmins(Provider<CurrentUser> user, PermissionBackend permissionBackend) {
+  public HideFromNonAdmins(CurrentUser user, PermissionBackend permissionBackend) {
     this.user = user;
     this.permissionBackend = permissionBackend;
   }
