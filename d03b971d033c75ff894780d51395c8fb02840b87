@@ -16,6 +16,24 @@
       "revId": "d03b971d033c75ff894780d51395c8fb02840b87",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd93d498_cbe4bc9d",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2018-10-19T19:11:09Z",
+      "side": 1,
+      "message": "It is because it fails with:\n\nplugins/server-config/src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java:55: error: incompatible types: Provider\u003cCurrentUser\u003e cannot be converted to CurrentUser\n      permissionBackend.user(user).check(GlobalPermission.ADMINISTRATE_SERVER);\n                             ^\nTarget //plugins/server-config:server-config failed to build",
+      "parentUuid": "53b89561_599ef405",
+      "revId": "d03b971d033c75ff894780d51395c8fb02840b87",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }

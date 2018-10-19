@@ -70,6 +70,24 @@
       "revId": "161c6333147b5ca4e7ee9c2bc94f54db9a0ad6db",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45fbbb12_6b249bf9",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1029953
+      },
+      "writtenOn": "2018-10-19T19:11:09Z",
+      "side": 1,
+      "message": "Oh, thanks, done.",
+      "parentUuid": "e3cfd945_9f3d5e1c",
+      "revId": "161c6333147b5ca4e7ee9c2bc94f54db9a0ad6db",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": false
     }
   ]
 }
