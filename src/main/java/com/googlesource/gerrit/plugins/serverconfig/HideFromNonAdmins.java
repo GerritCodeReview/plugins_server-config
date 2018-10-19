@@ -52,7 +52,7 @@ public class HideFromNonAdmins implements Filter {
   public void doFilter(ServletRequest req, ServletResponse rsp,
       FilterChain chain) throws IOException, ServletException {
     try {
-      permissionBackend.user(user).check(GlobalPermission.ADMINISTRATE_SERVER);
+      permissionBackend.currentUser().check(GlobalPermission.ADMINISTRATE_SERVER);
     } catch (AuthException | PermissionBackendException e) {
       ((HttpServletResponse) rsp).sendError(HttpServletResponse.SC_NOT_FOUND,
           "Not Found");
