@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53b89561_599ef405",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-10-19T19:04:40Z",
+      "side": 1,
+      "message": "This change is not actually needed. Also it doesn\u0027t match the commit message in this change, that is stating, the the code is adapted to current master, but there is no problem wit that code at all.",
+      "revId": "d03b971d033c75ff894780d51395c8fb02840b87",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
