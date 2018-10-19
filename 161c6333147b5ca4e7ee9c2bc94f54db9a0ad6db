@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d197cdbf_4777df1b",
+        "filename": "src/main/java/com/googlesource/gerrit/plugins/serverconfig/HideFromNonAdmins.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1011323
+      },
+      "writtenOn": "2018-10-19T18:41:21Z",
+      "side": 1,
+      "message": "Why is this change? Not to mention that you left Provider\u003cCurrentUser\u003e user unsued?",
+      "revId": "161c6333147b5ca4e7ee9c2bc94f54db9a0ad6db",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
