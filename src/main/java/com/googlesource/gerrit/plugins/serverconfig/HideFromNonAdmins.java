@@ -20,7 +20,6 @@ import com.google.gerrit.server.permissions.GlobalPermission;
 import com.google.gerrit.server.permissions.PermissionBackend;
 import com.google.gerrit.server.permissions.PermissionBackendException;
 import com.google.inject.Inject;
-import com.google.inject.Provider;
 import com.google.inject.Singleton;
 
 import java.io.IOException;
@@ -39,11 +38,11 @@ import javax.servlet.http.HttpServletResponse;
 @Singleton
 public class HideFromNonAdmins implements Filter {
 
-  private final Provider<CurrentUser> user;
+  private final CurrentUser user;
   private final PermissionBackend permissionBackend;
 
   @Inject
-  public HideFromNonAdmins(Provider<CurrentUser> user, PermissionBackend permissionBackend) {
+  public HideFromNonAdmins(CurrentUser user, PermissionBackend permissionBackend) {
     this.user = user;
     this.permissionBackend = permissionBackend;
   }
