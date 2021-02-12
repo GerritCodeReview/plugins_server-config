@@ -25,7 +25,7 @@ import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.httpd.WebSession;
 import com.google.gerrit.server.CurrentUser;
-import com.google.gerrit.server.audit.AuditEvent;
+import com.google.gerrit.server.AuditEvent;
 import com.google.gerrit.server.audit.AuditService;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.gerrit.server.util.time.TimeUtil;
