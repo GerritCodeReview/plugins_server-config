@@ -14,15 +14,14 @@
 
 package com.googlesource.gerrit.plugins.serverconfig;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import org.eclipse.jgit.diff.DiffAlgorithm;
 import org.eclipse.jgit.diff.DiffFormatter;
 import org.eclipse.jgit.diff.EditList;
 import org.eclipse.jgit.diff.MyersDiff;
 import org.eclipse.jgit.diff.RawText;
 import org.eclipse.jgit.diff.RawTextComparator;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 public class UnifiedDiffer {
 
@@ -40,5 +39,4 @@ public class UnifiedDiffer {
 
     return os.toString(CHARSET_NAME);
   }
-
 }

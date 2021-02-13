@@ -16,29 +16,19 @@ package com.googlesource.gerrit.plugins.serverconfig;
 
 import com.google.common.base.CharMatcher;
 import com.google.common.base.Charsets;
-import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 import com.google.common.io.ByteStreams;
 import com.google.gerrit.extensions.annotations.PluginName;
 import com.google.gerrit.extensions.registration.DynamicItem;
 import com.google.gerrit.httpd.WebSession;
-import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.AuditEvent;
+import com.google.gerrit.server.CurrentUser;
 import com.google.gerrit.server.audit.AuditService;
 import com.google.gerrit.server.config.SitePaths;
 import com.google.gerrit.server.util.time.TimeUtil;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
-import org.eclipse.jgit.diff.RawText;
-import org.eclipse.jgit.errors.ConfigInvalidException;
-import org.eclipse.jgit.storage.file.FileBasedConfig;
-import org.eclipse.jgit.util.FS;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -50,16 +40,20 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.text.MessageFormat;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.eclipse.jgit.diff.RawText;
+import org.eclipse.jgit.errors.ConfigInvalidException;
+import org.eclipse.jgit.storage.file.FileBasedConfig;
+import org.eclipse.jgit.util.FS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Singleton
 public class ServerConfigServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-  private static final Logger log = LoggerFactory
-      .getLogger(ServerConfigServlet.class);
+  private static final Logger log = LoggerFactory.getLogger(ServerConfigServlet.class);
 
   private final SitePaths sitePaths;
   private final AuditService auditService;
@@ -67,8 +61,11 @@ public class ServerConfigServlet extends HttpServlet {
   private final String pluginName;
 
   @Inject
-  ServerConfigServlet(SitePaths sitePaths, DynamicItem<WebSession> webSession,
-      AuditService auditService, @PluginName String pluginName) {
+  ServerConfigServlet(
+      SitePaths sitePaths,
+      DynamicItem<WebSession> webSession,
+      AuditService auditService,
+      @PluginName String pluginName) {
     this.webSession = webSession;
     this.auditService = auditService;
     this.pluginName = pluginName;
@@ -76,8 +73,7 @@ public class ServerConfigServlet extends HttpServlet {
   }
 
   @Override
-  public void doGet(HttpServletRequest req, HttpServletResponse res)
-      throws IOException {
+  public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
     if (!isAllowedPath(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
@@ -86,8 +82,7 @@ public class ServerConfigServlet extends HttpServlet {
   }
 
   @Override
-  public void doPut(HttpServletRequest req, HttpServletResponse res)
-      throws IOException {
+  public void doPut(HttpServletRequest req, HttpServletResponse res) throws IOException {
     if (!isAllowedPath(req)) {
       res.setStatus(HttpServletResponse.SC_FORBIDDEN);
       return;
@@ -99,8 +94,8 @@ public class ServerConfigServlet extends HttpServlet {
     }
   }
 
-  private void writeFileAndFireAuditEvent(HttpServletRequest req,
-      HttpServletResponse res) throws IOException {
+  private void writeFileAndFireAuditEvent(HttpServletRequest req, HttpServletResponse res)
+      throws IOException {
     File oldFile = resolvePath(req).toFile();
     File dir = oldFile.getParentFile();
     File newFile = File.createTempFile(oldFile.getName(), ".new", dir);
@@ -122,19 +117,17 @@ public class ServerConfigServlet extends HttpServlet {
 
       Throwable cause = e.getCause();
       final String msg =
-          cause instanceof ConfigInvalidException ? cause.getMessage()
-              : e.getMessage();
+          cause instanceof ConfigInvalidException ? cause.getMessage() : e.getMessage();
 
       newFile.delete();
       respondInvalidConfig(req, res, msg);
     }
   }
 
-  private void respondInvalidConfig(HttpServletRequest req,
-      HttpServletResponse res, String messageTxt) throws IOException {
+  private void respondInvalidConfig(
+      HttpServletRequest req, HttpServletResponse res, String messageTxt) throws IOException {
     String message =
-        MessageFormat.format("Invalid config file {0}: {1}", req.getPathInfo(),
-            messageTxt);
+        MessageFormat.format("Invalid config file {0}: {1}", req.getPathInfo(), messageTxt);
     res.setStatus(HttpServletResponse.SC_BAD_REQUEST);
     res.setContentType("application/octet-stream");
     res.setContentLength(message.length());
@@ -156,8 +149,7 @@ public class ServerConfigServlet extends HttpServlet {
     String sessionId = webSession.get().getSessionId();
     CurrentUser who = webSession.get().getUser();
     long when = TimeUtil.nowMs();
-    ListMultimap<String, Object> params =
-        MultimapBuilder.hashKeys().arrayListValues().build();
+    ListMultimap<String, Object> params = MultimapBuilder.hashKeys().arrayListValues().build();
     params.put("plugin", pluginName);
     params.put("class", ServerConfigServlet.class);
     params.put("diff", diff);
@@ -178,13 +170,13 @@ public class ServerConfigServlet extends HttpServlet {
   }
 
   private Path resolvePath(HttpServletRequest req) {
-    return sitePaths.resolve(CharMatcher.is('/').trimLeadingFrom(
-        req.getServletPath() + req.getPathInfo()));
+    return sitePaths.resolve(
+        CharMatcher.is('/').trimLeadingFrom(req.getServletPath() + req.getPathInfo()));
   }
 
   private boolean isParent(Path parent, Path child) throws IOException {
     Path p = child;
-    for (;;) {
+    for (; ; ) {
       p = p.getParent();
       if (p == null) {
         return false;
@@ -195,8 +187,7 @@ public class ServerConfigServlet extends HttpServlet {
     }
   }
 
-  private void streamFile(HttpServletRequest req, HttpServletResponse res)
-      throws IOException {
+  private void streamFile(HttpServletRequest req, HttpServletResponse res) throws IOException {
     File f = resolvePath(req).toFile();
     res.setStatus(HttpServletResponse.SC_OK);
     res.setContentType("application/octet-stream");
@@ -207,8 +198,7 @@ public class ServerConfigServlet extends HttpServlet {
     }
   }
 
-  private void writeFile(HttpServletRequest req, HttpServletResponse res)
-      throws IOException {
+  private void writeFile(HttpServletRequest req, HttpServletResponse res) throws IOException {
     res.setStatus(HttpServletResponse.SC_NO_CONTENT);
     streamRequestToFile(req, resolvePath(req).toFile());
   }
